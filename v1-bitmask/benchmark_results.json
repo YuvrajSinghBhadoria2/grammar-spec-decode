@@ -1,0 +1,46 @@
+[
+  {
+    "name": "no_spec",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 0.8846169523894787,
+    "tpot_ms": 3.0930662670960793,
+    "tokens_per_sec": 323.3037748456804
+  },
+  {
+    "name": "baseline_ngram",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 322,
+    "elapsed_s": 1.9438572581857443,
+    "tpot_ms": 6.036823783185541,
+    "tokens_per_sec": 165.6500232432352,
+    "invalid_outputs": []
+  },
+  {
+    "name": "grammar_aware",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 3.882685948163271,
+    "tpot_ms": 13.575824993577871,
+    "tokens_per_sec": 73.66034848512383,
+    "invalid_outputs": [],
+    "filter_stats": {
+      "total_drafts_proposed": 349,
+      "total_drafts_filtered": 0,
+      "total_drafts_substituted": 290,
+      "total_requests": 261,
+      "grammar_active_requests": 8,
+      "num_propose_calls": 40,
+      "total_draft_tokens_returned": 349,
+      "filter_rate": 0.0,
+      "substitution_rate": 0.830945558739255,
+      "avg_draft_len": 8.725
+    }
+  }
+]
