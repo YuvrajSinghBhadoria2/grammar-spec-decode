@@ -1,0 +1,121 @@
+{
+  "weather_k_sweep": [
+    {
+      "name": "grammar_k7",
+      "mode": "eagle3_grammar",
+      "valid": 11,
+      "total": 12,
+      "total_tokens": 1808,
+      "elapsed_s": 19.002422435209155,
+      "tpot_ms": 10.510189400005064,
+      "tok_per_s": 95.1457639763864,
+      "stats": {
+        "propose_calls": 893,
+        "mask_applied": 6103,
+        "mask_rows": 6103,
+        "mask_changed": 0,
+        "fallback_first_valid": 0,
+        "draft_advances": 5234,
+        "accepted_committed": 1825,
+        "rejected_committed": 15,
+        "terminated": 148,
+        "build_s": 1.812767919152975
+      }
+    },
+    {
+      "name": "baseline_k7",
+      "mode": "eagle3",
+      "valid": 11,
+      "total": 12,
+      "total_tokens": 1797,
+      "elapsed_s": 22.01715516485274,
+      "tpot_ms": 12.25217315795923,
+      "tok_per_s": 81.61817394413677,
+      "stats": {
+        "propose_calls": 1239
+      }
+    },
+    {
+      "name": "baseline_k3",
+      "mode": "eagle3",
+      "valid": 11,
+      "total": 12,
+      "total_tokens": 1761,
+      "elapsed_s": 17.99073639139533,
+      "tpot_ms": 10.21620465155896,
+      "tok_per_s": 97.88370868700277,
+      "stats": {
+        "propose_calls": 1240
+      }
+    },
+    {
+      "name": "grammar_k3",
+      "mode": "eagle3_grammar",
+      "valid": 11,
+      "total": 12,
+      "total_tokens": 1806,
+      "elapsed_s": 16.05315188318491,
+      "tpot_ms": 8.888788418153327,
+      "tok_per_s": 112.50127159711975,
+      "stats": {
+        "propose_calls": 978,
+        "mask_applied": 2879,
+        "mask_rows": 2879,
+        "mask_changed": 0,
+        "fallback_first_valid": 0,
+        "draft_advances": 1923,
+        "accepted_committed": 1823,
+        "rejected_committed": 15,
+        "terminated": 55,
+        "build_s": 1.813080344349146
+      }
+    }
+  ],
+  "tool_schema_k5": [
+    {
+      "name": "tool_no_spec",
+      "mode": "none",
+      "valid": 5,
+      "total": 8,
+      "total_tokens": 2360,
+      "elapsed_s": 25.868049699813128,
+      "tpot_ms": 10.961038008395393,
+      "tok_per_s": 91.23223541730897
+    },
+    {
+      "name": "tool_baseline_eagle3",
+      "mode": "eagle3",
+      "valid": 3,
+      "total": 8,
+      "total_tokens": 2982,
+      "elapsed_s": 40.02579704858363,
+      "tpot_ms": 13.42246715244253,
+      "tok_per_s": 74.50195173828581,
+      "stats": {
+        "propose_calls": 2481
+      }
+    },
+    {
+      "name": "tool_grammar_masked",
+      "mode": "eagle3_grammar",
+      "valid": 4,
+      "total": 8,
+      "total_tokens": 2541,
+      "elapsed_s": 46.47719009965658,
+      "tpot_ms": 18.290905194670042,
+      "tok_per_s": 54.67197983680978,
+      "stats": {
+        "propose_calls": 2542,
+        "mask_applied": 12710,
+        "mask_rows": 12710,
+        "mask_changed": 0,
+        "fallback_first_valid": 0,
+        "draft_advances": 10168,
+        "accepted_committed": 74,
+        "rejected_committed": 2499,
+        "terminated": 0,
+        "build_s": 1.778131041675806
+      }
+    }
+  ]
+}
