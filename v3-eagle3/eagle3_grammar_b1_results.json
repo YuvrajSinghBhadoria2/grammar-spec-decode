@@ -1,0 +1,188 @@
+{
+  "iterations": 3,
+  "aggregate": {
+    "no_spec_7b_b1": {
+      "tpot_mean": 11.091962477826323,
+      "tpot_std": 0.0065079901501001024,
+      "tpots": [
+        11.094410919853914,
+        11.098421664417156,
+        11.083054849207901
+      ]
+    },
+    "baseline_eagle3_b1": {
+      "tpot_mean": 11.465637588423332,
+      "tpot_std": 0.03806699066681989,
+      "tpots": [
+        11.489724434763524,
+        11.495289627148743,
+        11.41189870335773
+      ],
+      "tpp_mean": 1.4432,
+      "tpp_std": 0.0
+    },
+    "eagle3_grammar_masked_b1": {
+      "tpot_mean": 9.609284899075474,
+      "tpot_std": 0.027439533077132545,
+      "tpots": [
+        9.646356230599606,
+        9.580815490438363,
+        9.600682976188454
+      ],
+      "tpp_mean": 1.9694656488549616,
+      "tpp_std": 2.220446049250313e-16
+    }
+  },
+  "raw": [
+    [
+      {
+        "name": "no_spec_7b_b1",
+        "mode": "none",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1793,
+        "avg_tokens": 149.41666666666666,
+        "elapsed_s": 19.892278779298067,
+        "tpot_ms": 11.094410919853914,
+        "tok_per_s": 90.13547517069681
+      },
+      {
+        "name": "baseline_eagle3_b1",
+        "mode": "eagle3",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1804,
+        "avg_tokens": 150.33333333333334,
+        "elapsed_s": 20.727462880313396,
+        "tpot_ms": 11.489724434763524,
+        "tok_per_s": 87.03428926235875,
+        "base_stats": {
+          "propose_calls": 1250
+        }
+      },
+      {
+        "name": "eagle3_grammar_masked_b1",
+        "mode": "eagle3_grammar",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1806,
+        "avg_tokens": 150.5,
+        "elapsed_s": 17.421319352462888,
+        "tpot_ms": 9.646356230599606,
+        "tok_per_s": 103.6660865610435,
+        "grammar_stats": {
+          "propose_calls": 917,
+          "mask_applied": 4486,
+          "mask_rows": 4486,
+          "mask_changed": 0,
+          "fallback_first_valid": 0,
+          "draft_advances": 3591,
+          "accepted_committed": 1823,
+          "rejected_committed": 15,
+          "terminated": 99,
+          "build_s": 1.8263464607298374
+        }
+      }
+    ],
+    [
+      {
+        "name": "no_spec_7b_b1",
+        "mode": "none",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1793,
+        "avg_tokens": 149.41666666666666,
+        "elapsed_s": 19.89947004429996,
+        "tpot_ms": 11.098421664417156,
+        "tok_per_s": 90.10290203751381
+      },
+      {
+        "name": "baseline_eagle3_b1",
+        "mode": "eagle3",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1804,
+        "avg_tokens": 150.33333333333334,
+        "elapsed_s": 20.737502487376332,
+        "tpot_ms": 11.495289627148743,
+        "tok_per_s": 86.99215351984455,
+        "base_stats": {
+          "propose_calls": 1250
+        }
+      },
+      {
+        "name": "eagle3_grammar_masked_b1",
+        "mode": "eagle3_grammar",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1806,
+        "avg_tokens": 150.5,
+        "elapsed_s": 17.302952775731683,
+        "tpot_ms": 9.580815490438363,
+        "tok_per_s": 104.37524874557894,
+        "grammar_stats": {
+          "propose_calls": 917,
+          "mask_applied": 4486,
+          "mask_rows": 4486,
+          "mask_changed": 0,
+          "fallback_first_valid": 0,
+          "draft_advances": 3591,
+          "accepted_committed": 1823,
+          "rejected_committed": 15,
+          "terminated": 99,
+          "build_s": 1.8373215161263943
+        }
+      }
+    ],
+    [
+      {
+        "name": "no_spec_7b_b1",
+        "mode": "none",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1793,
+        "avg_tokens": 149.41666666666666,
+        "elapsed_s": 19.871917344629765,
+        "tpot_ms": 11.083054849207901,
+        "tok_per_s": 90.22783100919774
+      },
+      {
+        "name": "baseline_eagle3_b1",
+        "mode": "eagle3",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1804,
+        "avg_tokens": 150.33333333333334,
+        "elapsed_s": 20.587065260857344,
+        "tpot_ms": 11.41189870335773,
+        "tok_per_s": 87.62783704921684,
+        "base_stats": {
+          "propose_calls": 1250
+        }
+      },
+      {
+        "name": "eagle3_grammar_masked_b1",
+        "mode": "eagle3_grammar",
+        "valid": 11,
+        "total": 12,
+        "total_tokens": 1806,
+        "avg_tokens": 150.5,
+        "elapsed_s": 17.338833454996347,
+        "tpot_ms": 9.600682976188454,
+        "tok_per_s": 104.15925642792216,
+        "grammar_stats": {
+          "propose_calls": 917,
+          "mask_applied": 4486,
+          "mask_rows": 4486,
+          "mask_changed": 0,
+          "fallback_first_valid": 0,
+          "draft_advances": 3591,
+          "accepted_committed": 1823,
+          "rejected_committed": 15,
+          "terminated": 99,
+          "build_s": 1.8398820795118809
+        }
+      }
+    ]
+  ]
+}

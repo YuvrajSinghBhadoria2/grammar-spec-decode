@@ -1,0 +1,23 @@
+{
+  "name": "eagle3_grammar_masked_diag",
+  "mode": "eagle3_grammar",
+  "valid": 11,
+  "total": 12,
+  "total_tokens": 1806,
+  "avg_tokens": 150.5,
+  "elapsed_s": 18.07966446876526,
+  "tpot_ms": 10.010888410169024,
+  "tok_per_s": 99.89123432683593,
+  "grammar_stats": {
+    "propose_calls": 917,
+    "mask_applied": 4486,
+    "mask_rows": 4486,
+    "mask_changed": 1756,
+    "fallback_first_valid": 0,
+    "draft_advances": 3591,
+    "accepted_committed": 1823,
+    "rejected_committed": 15,
+    "terminated": 99,
+    "build_s": 1.8358282931149006
+  }
+}

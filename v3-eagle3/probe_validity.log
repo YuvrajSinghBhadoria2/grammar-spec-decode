@@ -1,0 +1,63 @@
+[2026-10-16 16:19:52] INFO utils.py:148: Note: detected 256 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+[2026-10-16 16:19:52] INFO utils.py:151: Note: NumExpr detected 256 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+[2026-10-16 16:19:52] INFO utils.py:164: NumExpr defaulting to 16 threads.
+INFO 10-16 16:19:56 [utils.py:253] non-default args: {'dtype': 'bfloat16', 'max_model_len': 4096, 'max_num_seqs': 1, 'disable_log_stats': True, 'model': 'Qwen/Qwen2.5-7B-Instruct'}
+INFO 10-16 16:19:57 [model.py:631] Resolved architecture: Qwen2ForCausalLM
+INFO 10-16 16:19:57 [model.py:1745] Using max model len 4096
+INFO 10-16 16:19:58 [scheduler.py:216] Chunked prefill is enabled with max_num_batched_tokens=4096.
+WARNING 10-16 16:19:59 [system_utils.py:103] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[2026-10-16 16:20:05] INFO utils.py:148: Note: detected 256 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+[2026-10-16 16:20:05] INFO utils.py:151: Note: NumExpr detected 256 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+[2026-10-16 16:20:05] INFO utils.py:164: NumExpr defaulting to 16 threads.
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:08 [core.py:93] Initializing a V1 LLM engine (v0.11.2) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'use_inductor': None, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {}, 'max_cudagraph_capture_size': 2, 'local_cache_dir': None}
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:09 [parallel_state.py:1208] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.42.4.203:47589 backend=nccl
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:09 [parallel_state.py:1394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:09 [gpu_model_runner.py:3259] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:10 [cuda.py:418] Valid backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:10 [cuda.py:427] Using FLASH_ATTN backend.
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.38it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.25it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:02<00:00,  1.23it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.19it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.21it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m 
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:15 [default_loader.py:314] Loading weights took 3.51 seconds
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:15 [gpu_model_runner.py:3338] Model loading took 14.2488 GiB memory and 5.060574 seconds
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:20 [backends.py:631] Using cache directory: /root/.cache/vllm/torch_compile_cache/ec982596bf/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:20 [backends.py:647] Dynamo bytecode transform time: 4.37 s
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:23 [backends.py:210] Directly load the compiled graph(s) for dynamic shape from the cache, took 2.862 s
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:26 [monitor.py:34] torch.compile takes 7.24 s in total
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:27 [gpu_worker.py:359] Available KV cache memory: 56.41 GiB
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:27 [kv_cache_utils.py:1229] GPU KV cache size: 1,056,320 tokens
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:27 [kv_cache_utils.py:1234] Maximum concurrency for 4,096 tokens per request: 257.89x
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 2/2 [00:00<00:00, 24.03it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/1 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 1/1 [00:00<00:00, 25.55it/s]
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:28 [gpu_model_runner.py:4244] Graph capturing finished in 1 secs, took 0.06 GiB
+[1;36m(EngineCore_DP0 pid=54824)[0;0m INFO 10-16 16:20:28 [core.py:250] init engine (profile, create kv cache, warmup model) took 12.81 seconds
+INFO 10-16 16:20:30 [llm.py:352] Supported tasks: ['generate']
+Adding requests:   0%|          | 0/12 [00:00<?, ?it/s]Adding requests: 100%|██████████| 12/12 [00:00<00:00, 413.35it/s]
+Processed prompts:   0%|          | 0/12 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   8%|▊         | 1/12 [00:01<00:17,  1.59s/it, est. speed input: 25.21 toks/s, output: 57.98 toks/s]Processed prompts:  17%|█▋        | 2/12 [00:03<00:15,  1.56s/it, est. speed input: 25.85 toks/s, output: 75.32 toks/s]Processed prompts:  25%|██▌       | 3/12 [00:04<00:12,  1.42s/it, est. speed input: 26.94 toks/s, output: 80.36 toks/s]Processed prompts:  33%|███▎      | 4/12 [00:05<00:10,  1.28s/it, est. speed input: 28.94 toks/s, output: 82.80 toks/s]Processed prompts:  42%|████▏     | 5/12 [00:06<00:08,  1.27s/it, est. speed input: 30.47 toks/s, output: 84.68 toks/s]Processed prompts:  50%|█████     | 6/12 [00:07<00:07,  1.19s/it, est. speed input: 36.65 toks/s, output: 85.82 toks/s]Processed prompts:  58%|█████▊    | 7/12 [00:09<00:06,  1.24s/it, est. speed input: 37.27 toks/s, output: 86.90 toks/s]Processed prompts:  67%|██████▋   | 8/12 [00:14<00:10,  2.59s/it, est. speed input: 26.54 toks/s, output: 89.39 toks/s]Processed prompts:  75%|███████▌  | 9/12 [00:15<00:06,  2.19s/it, est. speed input: 26.97 toks/s, output: 89.68 toks/s]Processed prompts:  83%|████████▎ | 10/12 [00:17<00:03,  1.94s/it, est. speed input: 27.51 toks/s, output: 89.95 toks/s]Processed prompts:  92%|█████████▏| 11/12 [00:18<00:01,  1.74s/it, est. speed input: 27.96 toks/s, output: 90.19 toks/s]Processed prompts: 100%|██████████| 12/12 [00:19<00:00,  1.61s/it, est. speed input: 28.13 toks/s, output: 90.38 toks/s]Processed prompts: 100%|██████████| 12/12 [00:19<00:00,  1.61s/it, est. speed input: 28.13 toks/s, output: 90.38 toks/s]Processed prompts: 100%|██████████| 12/12 [00:19<00:00,  1.65s/it, est. speed input: 28.13 toks/s, output: 90.38 toks/s]
+PROMPT 0: VALID ntok=98
+PROMPT 1: VALID ntok=123
+PROMPT 2: VALID ntok=115
+PROMPT 3: JSON_ERROR Expecting ',' delimiter: line 945 column 1 (char 1543)  ntok=512 finish=length
+  text[:300]='{"tool": "weatherapi.ComWeatherAPI", "arguments": {"location": "Sydney", "units": "celsius", "days": 4, "include_alerts": true} \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n'
+  text[-300:]=' \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n'
+PROMPT 4: VALID ntok=123
+PROMPT 5: VALID ntok=127
+PROMPT 6: VALID ntok=100
+PROMPT 7: VALID ntok=116
+PROMPT 8: VALID ntok=144
+PROMPT 9: VALID ntok=92
+PROMPT 10: VALID ntok=122
+PROMPT 11: VALID ntok=121
+PROBE_DONE
+[rank0]:[W1016 16:20:51.401120259 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR 10-16 16:20:51 [core_client.py:598] Engine core proc EngineCore_DP0 died unexpectedly, shutting down client.

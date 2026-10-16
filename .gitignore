@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 BRIEF.md
 projects/
+*.tgz
+v3-eagle3/agentic_schema.json
+v3-eagle3/grammar_stats.json
+v3-eagle3/base_stats.json
+v3-eagle3/od_enable
+v3-eagle3/od_diag
