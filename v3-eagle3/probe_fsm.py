@@ -6,12 +6,16 @@ report accept/reject statistics + first rejection context.
 If standalone accepts ~100%, the in-engine bookkeeping is at fault.
 """
 
+
 from __future__ import annotations
+import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 import json
 import sys
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 from robustness import TOOL_PROMPTS, TOOL_SCHEMA  # noqa: E402
 from eagle3_grammar_b1 import TOKENIZER_NAME  # noqa: E402
 

@@ -1,6 +1,9 @@
+import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 import sys
 
-p = "/root/grammar-spec/eagle3_grammar_b1.py"
+p = os.path.join(_BASE_DIR, "eagle3_grammar_b1.py")
 src = open(p).read()
 old = """                if m is not None and nadv > 0:
                     try:
@@ -11,7 +14,7 @@ new = """                if m is not None and nadv > 0:
                     try:
                         m.rollback(nadv)
                     except Exception as _e:
-                        with open("/root/grammar-spec/rollback_fail.log", "a") as _f:
+                        with open(os.path.join(_BASE_DIR, "rollback_fail.log"), "a") as _f:
                             _f.write("nadv=%d err=%s: %s\\n" % (nadv, type(_e).__name__, _e))"""
 if old not in src:
     # Already patched?

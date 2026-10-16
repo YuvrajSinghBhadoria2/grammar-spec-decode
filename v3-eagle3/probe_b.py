@@ -4,11 +4,15 @@ prep path used)."""
 
 from __future__ import annotations
 
+import os
+
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 import collections
 import json
 import sys
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 import eagle3_grammar_b1 as eg  # noqa: E402  (installs the patch)
 
 from vllm.v1.spec_decode.eagle import EagleProposer  # noqa: E402

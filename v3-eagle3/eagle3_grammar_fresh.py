@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 import sys
 import time
 
@@ -113,11 +114,11 @@ AGENTIC_PROMPTS = [
     ),
 ]
 
-SCHEMA_PATH = "/root/grammar-spec/agentic_schema.json"
-STATS_PATH = "/root/grammar-spec/grammar_stats.json"
-BASE_STATS_PATH = "/root/grammar-spec/base_stats.json"
-ENABLE_PATH = "/root/grammar-spec/od_enable"
-DIAG_PATH = "/root/grammar-spec/od_diag"
+SCHEMA_PATH = os.path.join(_BASE_DIR, "agentic_schema.json")
+STATS_PATH = os.path.join(_BASE_DIR, "grammar_stats.json")
+BASE_STATS_PATH = os.path.join(_BASE_DIR, "base_stats.json")
+ENABLE_PATH = os.path.join(_BASE_DIR, "od_enable")
+DIAG_PATH = os.path.join(_BASE_DIR, "od_diag")
 TOKENIZER_NAME = "Qwen/Qwen2.5-7B-Instruct"
 
 # NOTE: do NOT write SCHEMA_PATH at module import — the engine worker re-imports
@@ -359,7 +360,7 @@ def _install_grammar_patch():
                 if not ok and rid not in self._g_logged_fail:
                     self._g_logged_fail.add(rid)
                     try:
-                        with open("/root/grammar-spec/fresh_fail.log", "a") as f:
+                        with open(os.path.join(_BASE_DIR, "fresh_fail.log"), "a") as f:
                             f.write(
                                 f"rid={rid} fail_at_hist_idx={j} hist_len={len(hist)} "
                                 f"tok={t} text={self._g_tok.decode([t])!r} "
@@ -653,7 +654,7 @@ def main() -> None:
                 f"{gs['mask_rows']} = {gs['mask_changed'] / gs['mask_rows']:.3f}",
                 flush=True,
             )
-        with open("/root/grammar-spec/eagle3_grammar_diag_results.json", "w") as f:
+        with open(os.path.join(_BASE_DIR, "eagle3_grammar_diag_results.json"), "w") as f:
             json.dump(r, f, indent=2, default=str)
         return
 
@@ -759,7 +760,7 @@ def main() -> None:
         "aggregate": agg,
         "raw": all_iters,
     }
-    out_path = "/root/grammar-spec/eagle3_grammar_fresh_results.json"
+    out_path = os.path.join(_BASE_DIR, "eagle3_grammar_fresh_results.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2, default=str)
     print(flush=True)

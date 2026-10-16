@@ -10,10 +10,11 @@ from __future__ import annotations
 
 import json
 import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 import sys
 import time
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 import eagle3_grammar_fresh as egf  # noqa: E402  (fresh patch, no schema write)
 
 from eagle3_grammar_fresh import (  # noqa: E402
@@ -219,7 +220,7 @@ def run_one(name: str, mode: str, spec: dict | None) -> dict:
 
 
 def main() -> None:
-    open("/root/grammar-spec/fresh_fail.log", "w").close()
+    open(os.path.join(_BASE_DIR, "fresh_fail.log"), "w").close()
     results = {}
     results["tool_no_spec_fixed"] = run_one("tool_no_spec_fixed", "none", None)
     results["tool_baseline_fixed"] = run_one(
@@ -269,9 +270,9 @@ def main() -> None:
         flush=True,
     )
 
-    with open("/root/grammar-spec/tool_fixed_results.json", "w") as f:
+    with open(os.path.join(_BASE_DIR, "tool_fixed_results.json"), "w") as f:
         json.dump(results, f, indent=2, default=str)
-    print("Saved /root/grammar-spec/tool_fixed_results.json", flush=True)
+    print("Saved {_BASE_DIR}/tool_fixed_results.json", flush=True)
 
 
 if __name__ == "__main__":

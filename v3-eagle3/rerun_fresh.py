@@ -5,12 +5,16 @@ Import order matters: eagle3_grammar_fresh installs its patch FIRST;
 robustness's import of eagle3_grammar_b1 then skips (patch flag already set).
 """
 
+
 from __future__ import annotations
+import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 import json
 import sys
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 
 import eagle3_grammar_fresh as egf  # noqa: E402  (installs FRESH patch first)
 
@@ -73,9 +77,9 @@ def main() -> None:
         flush=True,
     )
 
-    with open("/root/grammar-spec/fresh_rerun_results.json", "w") as f:
+    with open(os.path.join(_BASE_DIR, "fresh_rerun_results.json"), "w") as f:
         json.dump(results, f, indent=2, default=str)
-    print("Saved /root/grammar-spec/fresh_rerun_results.json", flush=True)
+    print("Saved {_BASE_DIR}/fresh_rerun_results.json", flush=True)
 
 
 if __name__ == "__main__":

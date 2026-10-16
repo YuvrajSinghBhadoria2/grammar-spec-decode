@@ -2,12 +2,16 @@
 tool-schema streams? Emulates the propose() draft/rollback cycle with the
 REAL generated token stream (no engine needed after generation)."""
 
+
 from __future__ import annotations
+import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 import json
 import sys
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 from robustness import TOOL_PROMPTS, TOOL_SCHEMA  # noqa: E402
 from eagle3_grammar_b1 import TOKENIZER_NAME  # noqa: E402
 
@@ -113,7 +117,7 @@ def main() -> None:
 
     # Control: same emulation on a WEATHER-schema stream (known-good schema)
     print("=== PROBE C control: weather schema stream ===", flush=True)
-    sys.path.insert(0, "/root/grammar-spec")
+    sys.path.insert(0, _BASE_DIR)
     from eagle3_grammar_b1 import AGENTIC_PROMPTS, AGENTIC_SCHEMA
 
     cg_w = xgr.GrammarCompiler(ti).compile_grammar(

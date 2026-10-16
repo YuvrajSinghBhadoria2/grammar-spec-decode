@@ -19,7 +19,9 @@ import os
 import sys
 import time
 
-sys.path.insert(0, "/root/grammar-spec")
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+sys.path.insert(0, _BASE_DIR)
 from eagle3_grammar_b1 import (  # noqa: E402  (installs EagleProposer patch)
     AGENTIC_PROMPTS,
     AGENTIC_SCHEMA,
@@ -343,7 +345,7 @@ def main() -> None:
             flush=True,
         )
 
-    out_path = "/root/grammar-spec/robustness_results.json"
+    out_path = os.path.join(_BASE_DIR, "robustness_results.json")
     with open(out_path, "w") as f:
         json.dump(results, f, indent=2, default=str)
     print(f"\nSaved {out_path}", flush=True)

@@ -1,16 +1,20 @@
 """Probe D: file-based logging from inside the engine worker —
 prep path used, committed contents, matcher identity stability."""
 
+
 from __future__ import annotations
+import os
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 import sys
 
-sys.path.insert(0, "/root/grammar-spec")
+sys.path.insert(0, _BASE_DIR)
 import eagle3_grammar_b1 as eg  # noqa: E402
 
 from vllm.v1.spec_decode.eagle import EagleProposer  # noqa: E402
 
-DBG = "/root/grammar-spec/dbg.log"
+DBG = os.path.join(_BASE_DIR, "dbg.log")
 _padded = EagleProposer.prepare_next_token_ids_padded
 _cpu = EagleProposer.prepare_next_token_ids_cpu
 _propose = EagleProposer.propose
