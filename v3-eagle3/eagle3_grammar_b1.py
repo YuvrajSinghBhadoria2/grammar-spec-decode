@@ -637,7 +637,7 @@ def main() -> None:
                 f"{gs['mask_rows']} = {gs['mask_changed'] / gs['mask_rows']:.3f}",
                 flush=True,
             )
-        with open("/root/grammar-spec/eagle3_grammar_diag_results.json", "w") as f:
+        with open(os.path.join(_BASE_DIR, "eagle3_grammar_diag_results.json"), "w") as f:
             json.dump(r, f, indent=2, default=str)
         return
 
@@ -743,7 +743,7 @@ def main() -> None:
         "aggregate": agg,
         "raw": all_iters,
     }
-    out_path = "/root/grammar-spec/eagle3_grammar_b1_results.json"
+    out_path = os.path.join(_BASE_DIR, "eagle3_grammar_b1_results.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2, default=str)
     print(flush=True)
