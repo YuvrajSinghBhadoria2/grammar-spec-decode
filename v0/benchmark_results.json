@@ -1,0 +1,41 @@
+[
+  {
+    "name": "no_spec",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 0.9445577319711447,
+    "tpot_ms": 3.3026494124865198,
+    "tokens_per_sec": 302.78720963213397
+  },
+  {
+    "name": "baseline_ngram",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 304,
+    "elapsed_s": 2.0223608762025833,
+    "tpot_ms": 6.652502882245339,
+    "tokens_per_sec": 150.31936365918295,
+    "invalid_outputs": []
+  },
+  {
+    "name": "grammar_aware",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 3.8495595064014196,
+    "tpot_ms": 13.45999827413084,
+    "tokens_per_sec": 74.29421457816447,
+    "invalid_outputs": [],
+    "filter_stats": {
+      "total_drafts_proposed": 344,
+      "total_drafts_filtered": 292,
+      "total_requests": 261,
+      "grammar_active_requests": 8,
+      "filter_rate": 0.8488372093023255
+    }
+  }
+]
