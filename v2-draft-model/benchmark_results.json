@@ -1,0 +1,64 @@
+[
+  {
+    "name": "no_spec",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 0.8593613505363464,
+    "tpot_ms": 3.0047599669103024,
+    "tokens_per_sec": 332.8052859504341
+  },
+  {
+    "name": "baseline_ngram",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 286,
+    "elapsed_s": 1.9523657523095608,
+    "tpot_ms": 6.826453679404059,
+    "tokens_per_sec": 146.48894535343845,
+    "invalid_outputs": []
+  },
+  {
+    "name": "grammar_aware",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 304,
+    "elapsed_s": 3.7661660443991423,
+    "tpot_ms": 12.388704093418232,
+    "tokens_per_sec": 80.71869280752874,
+    "invalid_outputs": [],
+    "filter_stats": {
+      "total_drafts_proposed": 380,
+      "total_drafts_filtered": 0,
+      "total_drafts_substituted": 314,
+      "total_requests": 277,
+      "grammar_active_requests": 8,
+      "num_propose_calls": 40,
+      "total_draft_tokens_returned": 380,
+      "filter_rate": 0.0,
+      "substitution_rate": 0.8263157894736842,
+      "avg_draft_len": 9.5
+    }
+  },
+  {
+    "name": "draft_model_grammar",
+    "valid": 8,
+    "total": 8,
+    "validity_rate": 1.0,
+    "total_tokens": 304,
+    "elapsed_s": 55.793774554505944,
+    "tpot_ms": 183.53215313982219,
+    "tokens_per_sec": 5.448636562543674,
+    "invalid_outputs": [],
+    "draft_stats": {
+      "total_requests": 277,
+      "grammar_active_requests": 8,
+      "num_propose_calls": 40,
+      "total_draft_tokens_returned": 1302,
+      "avg_draft_len": 32.55
+    }
+  }
+]
