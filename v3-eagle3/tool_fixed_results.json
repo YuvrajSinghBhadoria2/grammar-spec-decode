@@ -1,0 +1,47 @@
+{
+  "tool_no_spec_fixed": {
+    "name": "tool_no_spec_fixed",
+    "mode": "none",
+    "valid": 5,
+    "total": 8,
+    "total_tokens": 2360,
+    "elapsed_s": 26.00004960782826,
+    "tpot_ms": 11.016970172808584,
+    "tok_per_s": 90.76905758246846
+  },
+  "tool_baseline_fixed": {
+    "name": "tool_baseline_fixed",
+    "mode": "eagle3",
+    "valid": 3,
+    "total": 8,
+    "total_tokens": 2982,
+    "elapsed_s": 40.36583976820111,
+    "tpot_ms": 13.536498916231091,
+    "tok_per_s": 73.874345662669,
+    "stats": {
+      "propose_calls": 2479
+    }
+  },
+  "tool_grammar_fixed": {
+    "name": "tool_grammar_fixed",
+    "mode": "eagle3_grammar",
+    "valid": 5,
+    "total": 8,
+    "total_tokens": 2355,
+    "elapsed_s": 24.41307720541954,
+    "tpot_ms": 10.366487136059254,
+    "tok_per_s": 96.46469308986602,
+    "stats": {
+      "propose_calls": 1303,
+      "mask_applied": 6470,
+      "mask_rows": 6470,
+      "mask_changed": 0,
+      "fallback_first_valid": 0,
+      "draft_advances": 5177,
+      "accepted_committed": 2387,
+      "rejected_committed": 0,
+      "terminated": 45,
+      "build_s": 1.8161523919552565
+    }
+  }
+}

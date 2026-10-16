@@ -1,0 +1,59 @@
+{
+  "tool_grammar_fresh": {
+    "name": "tool_grammar_fresh",
+    "mode": "eagle3_grammar",
+    "valid": 4,
+    "total": 8,
+    "total_tokens": 2541,
+    "elapsed_s": 47.2332304045558,
+    "tpot_ms": 18.588441717652813,
+    "tok_per_s": 53.79687093675711,
+    "stats": {
+      "propose_calls": 2542,
+      "mask_applied": 12710,
+      "mask_rows": 12710,
+      "mask_changed": 0,
+      "fallback_first_valid": 0,
+      "draft_advances": 10168,
+      "accepted_committed": 74,
+      "rejected_committed": 2499,
+      "terminated": 0,
+      "build_s": 1.7786655575037003
+    }
+  },
+  "weather_grammar_fresh": {
+    "name": "weather_grammar_fresh",
+    "mode": "eagle3_grammar",
+    "valid": 11,
+    "total": 12,
+    "total_tokens": 1806,
+    "elapsed_s": 17.52934069931507,
+    "tpot_ms": 9.706168715013883,
+    "tok_per_s": 103.02726331690081,
+    "stats": {
+      "propose_calls": 917,
+      "mask_applied": 4486,
+      "mask_rows": 4486,
+      "mask_changed": 0,
+      "fallback_first_valid": 0,
+      "draft_advances": 3591,
+      "accepted_committed": 1823,
+      "rejected_committed": 15,
+      "terminated": 99,
+      "build_s": 1.8880641851574183
+    }
+  },
+  "weather_baseline_session2": {
+    "name": "weather_baseline_session2",
+    "mode": "eagle3",
+    "valid": 11,
+    "total": 12,
+    "total_tokens": 1804,
+    "elapsed_s": 20.558254074305296,
+    "tpot_ms": 11.39592797910493,
+    "tok_per_s": 87.75064232009501,
+    "stats": {
+      "propose_calls": 1250
+    }
+  }
+}

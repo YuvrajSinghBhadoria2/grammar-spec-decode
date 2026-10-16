@@ -1,0 +1,128 @@
+[2026-10-16 17:34:41] INFO utils.py:148: Note: detected 256 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+[2026-10-16 17:34:41] INFO utils.py:151: Note: NumExpr detected 256 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+[2026-10-16 17:34:41] INFO utils.py:164: NumExpr defaulting to 16 threads.
+======================================================================
+CONFIG: tool_grammar_fresh2  (mode=eagle3_grammar)
+======================================================================
+INFO 10-16 17:34:44 [utils.py:253] non-default args: {'dtype': 'bfloat16', 'max_model_len': 4096, 'max_num_seqs': 1, 'enforce_eager': True, 'speculative_config': {'method': 'eagle3', 'model': 'ruipeterpan/Qwen2.5-7B-Instruct_EAGLE3_UltraChat', 'num_speculative_tokens': 5}, 'model': 'Qwen/Qwen2.5-7B-Instruct'}
+INFO 10-16 17:34:46 [model.py:631] Resolved architecture: Qwen2ForCausalLM
+INFO 10-16 17:34:46 [model.py:1745] Using max model len 4096
+INFO 10-16 17:34:47 [model.py:631] Resolved architecture: LlamaForCausalLMEagle3
+INFO 10-16 17:34:47 [model.py:1745] Using max model len 32768
+INFO 10-16 17:34:47 [scheduler.py:216] Chunked prefill is enabled with max_num_batched_tokens=4096.
+INFO 10-16 17:34:47 [vllm.py:500] Cudagraph is disabled under eager mode
+WARNING 10-16 17:34:49 [system_utils.py:103] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[2026-10-16 17:34:54] INFO utils.py:148: Note: detected 256 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+[2026-10-16 17:34:54] INFO utils.py:151: Note: NumExpr detected 256 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.
+[2026-10-16 17:34:54] INFO utils.py:164: NumExpr defaulting to 16 threads.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:57 [core.py:93] Initializing a V1 LLM engine (v0.11.2) with config: model='Qwen/Qwen2.5-7B-Instruct', speculative_config=SpeculativeConfig(method='eagle3', model='ruipeterpan/Qwen2.5-7B-Instruct_EAGLE3_UltraChat', num_spec_tokens=5), tokenizer='Qwen/Qwen2.5-7B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen2.5-7B-Instruct, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'splitting_ops': None, 'compile_mm_encoder': False, 'use_inductor': None, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {}, 'max_cudagraph_capture_size': 0, 'local_cache_dir': None}
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:57 [parallel_state.py:1208] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.42.4.203:46193 backend=nccl
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:57 [parallel_state.py:1394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=67032)[0;0m WARNING 10-16 17:34:58 [__init__.py:204] min_p, logit_bias, and min_tokens parameters won't currently work with speculative decoding enabled.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:58 [gpu_model_runner.py:3259] Starting to load model Qwen/Qwen2.5-7B-Instruct...
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:58 [cuda.py:418] Valid backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:34:58 [cuda.py:427] Using FLASH_ATTN backend.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.35it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.24it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:02<00:00,  1.24it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.19it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.21it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m 
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:03 [default_loader.py:314] Loading weights took 3.51 seconds
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:03 [gpu_model_runner.py:3284] Loading drafter model...
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:04 [weight_utils.py:481] No model.safetensors.index.json found in remote.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00, 671.95it/s]
+[1;36m(EngineCore_DP0 pid=67032)[0;0m 
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:04 [default_loader.py:314] Loading weights took 0.16 seconds
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:04 [eagle.py:1014] Detected EAGLE model without its own embed_tokens in the checkpoint. Sharing target model embedding weights with the draft model.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:04 [eagle.py:1079] Detected EAGLE model with distinct lm_head weights. Keeping separate lm_head weights from the target model.
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:05 [gpu_model_runner.py:3338] Model loading took 14.8959 GiB memory and 6.119743 seconds
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:06 [gpu_worker.py:359] Available KV cache memory: 55.66 GiB
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:07 [kv_cache_utils.py:1229] GPU KV cache size: 1,006,224 tokens
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:07 [kv_cache_utils.py:1234] Maximum concurrency for 4,096 tokens per request: 245.66x
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:07 [core.py:250] init engine (profile, create kv cache, warmup model) took 2.01 seconds
+[1;36m(EngineCore_DP0 pid=67032)[0;0m INFO 10-16 17:35:09 [vllm.py:500] Cudagraph is disabled under eager mode
+INFO 10-16 17:35:09 [llm.py:352] Supported tasks: ['generate']
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 225.28it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 18.53 toks/s, output: 12.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 18.53 toks/s, output: 12.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it, est. speed input: 18.53 toks/s, output: 12.62 toks/s]
+Adding requests:   0%|          | 0/8 [00:00<?, ?it/s]Adding requests: 100%|██████████| 8/8 [00:00<00:00, 358.20it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]INFO 10-16 17:35:21 [loggers.py:236] Engine 000: Avg prompt throughput: 7.5 tokens/s, Avg generation throughput: 42.4 tokens/s, Running: 1 reqs, Waiting: 7 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%
+INFO 10-16 17:35:21 [metrics.py:100] SpecDecoding metrics: Mean acceptance length: 1.02, Accepted throughput: 0.33 tokens/s, Drafted throughput: 65.46 tokens/s, Accepted: 4 tokens, Drafted: 782 tokens, Per-position acceptance rate: 0.012, 0.012, 0.000, 0.000, 0.000, Avg Draft acceptance rate: 0.5%
+Processed prompts:  12%|█▎        | 1/8 [00:10<01:10, 10.06s/it, est. speed input: 4.28 toks/s, output: 50.92 toks/s]Processed prompts:  25%|██▌       | 2/8 [00:11<00:30,  5.11s/it, est. speed input: 6.84 toks/s, output: 51.72 toks/s]INFO 10-16 17:35:31 [loggers.py:236] Engine 000: Avg prompt throughput: 7.8 tokens/s, Avg generation throughput: 54.3 tokens/s, Running: 1 reqs, Waiting: 5 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+INFO 10-16 17:35:31 [metrics.py:100] SpecDecoding metrics: Mean acceptance length: 1.05, Accepted throughput: 0.60 tokens/s, Drafted throughput: 61.85 tokens/s, Accepted: 6 tokens, Drafted: 619 tokens, Per-position acceptance rate: 0.032, 0.016, 0.000, 0.000, 0.000, Avg Draft acceptance rate: 1.0%
+Processed prompts:  38%|███▊      | 3/8 [00:21<00:35,  7.13s/it, est. speed input: 5.70 toks/s, output: 52.58 toks/s]INFO 10-16 17:35:41 [loggers.py:236] Engine 000: Avg prompt throughput: 3.9 tokens/s, Avg generation throughput: 53.8 tokens/s, Running: 1 reqs, Waiting: 4 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+INFO 10-16 17:35:41 [metrics.py:100] SpecDecoding metrics: Mean acceptance length: 1.02, Accepted throughput: 0.30 tokens/s, Drafted throughput: 83.09 tokens/s, Accepted: 3 tokens, Drafted: 832 tokens, Per-position acceptance rate: 0.012, 0.006, 0.000, 0.000, 0.000, Avg Draft acceptance rate: 0.4%
+Processed prompts:  50%|█████     | 4/8 [00:30<00:32,  8.07s/it, est. speed input: 5.20 toks/s, output: 52.98 toks/s]Processed prompts:  62%|██████▎   | 5/8 [00:33<00:18,  6.04s/it, est. speed input: 6.24 toks/s, output: 53.19 toks/s]Processed prompts:  75%|███████▌  | 6/8 [00:35<00:09,  4.67s/it, est. speed input: 7.02 toks/s, output: 53.33 toks/s]Processed prompts:  88%|████████▊ | 7/8 [00:37<00:04,  4.02s/it, est. speed input: 7.60 toks/s, output: 53.57 toks/s]INFO 10-16 17:35:51 [loggers.py:236] Engine 000: Avg prompt throughput: 16.8 tokens/s, Avg generation throughput: 55.7 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 4.3%
+INFO 10-16 17:35:51 [metrics.py:100] SpecDecoding metrics: Mean acceptance length: 1.06, Accepted throughput: 1.80 tokens/s, Drafted throughput: 145.52 tokens/s, Accepted: 18 tokens, Drafted: 1456 tokens, Per-position acceptance rate: 0.030, 0.027, 0.003, 0.000, 0.000, Avg Draft acceptance rate: 1.2%
+Processed prompts: 100%|██████████| 8/8 [00:47<00:00,  5.79s/it, est. speed input: 6.91 toks/s, output: 53.54 toks/s]Processed prompts: 100%|██████████| 8/8 [00:47<00:00,  5.79s/it, est. speed input: 6.91 toks/s, output: 53.54 toks/s]Processed prompts: 100%|██████████| 8/8 [00:47<00:00,  5.93s/it, est. speed input: 6.91 toks/s, output: 53.54 toks/s]
+  [tool_grammar_fresh2] Valid=4/8  TPOT=18.69ms  AvgTok=317.6  proposes=2542
+[rank0]:[W1016 17:35:59.938258383 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+nanobind: leaked 4 instances!
+ - leaked instance 0x7f3294f19c68 of type "xgrammar.xgrammar_bindings.CompiledGrammar"
+ - leaked instance 0x7f3294f19c98 of type "xgrammar.xgrammar_bindings.GrammarMatcher"
+ - leaked instance 0x7f3295172898 of type "xgrammar.xgrammar_bindings.TokenizerInfo"
+ - leaked instance 0x7f33fc161488 of type "xgrammar.xgrammar_bindings.CompiledGrammar"
+nanobind: leaked 5 types!
+ - leaked type "xgrammar.xgrammar_bindings.CompiledGrammar"
+ - leaked type "xgrammar.xgrammar_bindings.TokenizerInfo"
+ - leaked type "xgrammar.xgrammar_bindings.Grammar"
+ - leaked type "xgrammar.xgrammar_bindings.GrammarMatcher"
+ - leaked type "xgrammar.xgrammar_bindings.GrammarCompiler"
+nanobind: leaked 47 functions!
+ - leaked function "__init__"
+ - leaked function ""
+ - leaked function "from_json_schema"
+ - leaked function ""
+ - leaked function "get_cache_size_bytes"
+ - leaked function "serialize_json"
+ - leaked function "to_string"
+ - leaked function "find_jump_forward_string"
+ - leaked function "is_terminated"
+ - leaked function "accept_token"
+ - leaked function "reset"
+ - leaked function "compile_json_schema"
+ - leaked function "serialize_json"
+ - leaked function "compile_regex"
+ - leaked function ""
+ - leaked function "deserialize_json"
+ - leaked function "concat"
+ - leaked function "compile_builtin_json_grammar"
+ - leaked function "dump_metadata"
+ - leaked function "serialize_json"
+ - leaked function "__init__"
+ - leaked function ""
+ - leaked function ""
+ - leaked function "deserialize_json"
+ - leaked function ""
+ - leaked function ""
+ - leaked function "accept_string"
+ - leaked function ""
+ - leaked function "from_ebnf"
+ - leaked function ""
+ - leaked function "union"
+ - leaked function "fill_next_token_bitmask"
+ - leaked function ""
+ - leaked function "from_regex"
+ - leaked function "from_vocab_and_metadata"
+ - leaked function "builtin_json_grammar"
+ - leaked function "from_structural_tag"
+ - leaked function "clear_cache"
+ - leaked function "_detect_metadata_from_hf"
+ - leaked function "compile_structural_tag"
+ - leaked function "__init__"
+ - leaked function "_debug_print_internal_state"
+ - leaked function "deserialize_json"
+ - leaked function "compile_grammar"
+ - leaked function ""
+ - leaked function ""
+ - leaked function "rollback"
+nanobind: this is likely caused by a reference counting issue in the binding code.
+stats: {"propose_calls": 2542, "mask_applied": 12710, "mask_rows": 12710, "mask_changed": 0, "fallback_first_valid": 0, "draft_advances": 10168, "accepted_committed": 74, "rejected_committed": 2499, "terminated": 0, "build_s": 1.8594147078692913}

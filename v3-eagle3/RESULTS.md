@@ -4,8 +4,8 @@
 
 Applying an xgrammar JSON-schema bitmask to EAGLE3 draft logits inside
 vLLM 0.11.2's `EagleProposer.propose()` (batch=1, agentic JSON workload)
-improves draft acceptance by **+36.5%** and end-to-end TPOT by **19.3%**
-versus unmasked EAGLE3. Grammar masking turns EAGLE3 from a net-**loss**
+improves draft acceptance by **+36.5%** and cuts end-to-end TPOT by
+**16.2% (1.19x)** versus unmasked EAGLE3. Grammar masking turns EAGLE3 from a net-**loss**
 on this workload (0.97x vs no_spec) into a net-**win** (1.15x vs
 no_spec).
 
@@ -58,7 +58,7 @@ max_num_seqs=1, 12 distinct agentic prompts, 3 iterations, temp=0)
 - `mask_applied/mask_rows`: 4486/4486 — every draft position masked.
 - `mask_changed` (argmax actually altered by the mask):
   **1756/4486 = 39.1%** of draft positions. Substantial real headroom.
-- `fallback_first_valid`: 0 — the EAGLE3 draft-vocab subset (16000 via
+- `fallback_first_valid`: 0 — the EAGLE3 reduced draft-vocab subset (via
   d2t) always contains at least one grammar-valid token here; the
   fallback path never fired.
 - FSM tracking: `accepted_committed` 1823, `rejected_committed` 15,
@@ -102,7 +102,7 @@ configs, so comparisons are unaffected. Every other prompt: valid.
 On these 12 diverse agentic JSON prompts, unmasked EAGLE3 accepts only
 1.44 draft tokens per propose call — not enough to amortize K=5 draft
 steps (0.967x vs no_spec). The mask raises acceptance to 1.97 while
-adding ~0.5 ms/propose of FSM+bitmask cost, netting 1.19x over
+adding ~0.5 ms per masked position of FSM+bitmask cost, netting 1.19x over
 baseline and 1.15x over no_spec. The mask both increases acceptance
 (39.1% of argmaxes change) and reduces wasted draft work (27% fewer
 propose calls for equal output).
@@ -114,14 +114,19 @@ propose calls for equal output).
 - Iterations replicate timing, not output distribution (deterministic
   outputs: identical token counts 1793/1804/1806 per iteration).
 - `tokens/propose` is an end-to-end acceptance proxy derived from
-  propose-call counts (1250 → 917 for equal output). vLLM 0.11.2's own
-  SpecDecoding footers (present in `eagle3_grammar_b1.log`) corroborate
-  the direction: Avg Draft acceptance rate 27–32% masked vs 20–21%
-  unmasked, with acceptance shifted toward position 0 (0.59–0.63 vs
-  0.39 per-position).
+  propose-call counters written by both paths (1250 → 917 for equal
+  output). vLLM's own SpecDecoding footer metrics were not used (footer
+  attribution in an earlier draft of this file was inverted and has been
+  removed; the proxy stands on the internal counters, which an
+  independent re-derivation confirmed against the raw JSON).
 - xgrammar runs on CPU; a GPU-resident matcher could remove the
   remaining per-position D2H sync.
-- Results have not been independently re-verified by a separate owner.
+- Headline/K-sweep/tool-fixed numbers were re-derived independently from the
+  raw JSONs after the session (all confirmed: tool 1.306× / +50.2% acceptance /
+  validity 5-3-5 / FSM rejects 0-of-2387; K-sweep 1.149× / 1.193× / 1.166×).
+  The K-sweep runner and the schema-clobber root-cause chain are archived in
+  this directory (`robustness.py` + `robustness.log`, `probe_{b,c,d,fsm}.log`,
+  `rerun_tool_fixed.*`).
 
 ## Files
 
@@ -132,3 +137,83 @@ propose calls for equal output).
 - `probe_validity.py` / `probe_validity.log` — per-prompt validity
   probe identifying the prompt-3 whitespace degeneration
 - `eagle3_grammar_b1.log` — full benchmark log (RESULTS footer at end)
+- `robustness.py` / `robustness.log` — K-sweep runner + full log
+- `rerun_tool_fixed.py` / `rerun_tool_fixed.log` /
+  `tool_fixed_results.json` — schema-clobber fix + clean tool rerun
+- `rerun_fresh.py` / `rerun_fresh.log` / `fresh_rerun_results.json` —
+  fresh-matcher rerun that reproduced the pre-fix failure (falsified
+  "rollback is the tool-schema cause")
+- `probe_{b,c,d,fsm}.*` — root-cause probes (worker re-import clobbered
+  `SCHEMA_PATH`; standalone matcher with the true tool schema accepts 100%)
+- `eagle3_grammar_fresh.py` — v4: fresh matcher per propose, zero rollback
+- `BLOG-DRAFT.md` / `VLLM-ISSUE-DRAFT.md` — outreach drafts (not yet posted)
+
+---
+
+# Addendum: robustness runs, schema-clobber bug, v4 fresh matcher
+
+## K-sweep (weather schema) — the advantage is K-robust
+
+Same protocol as v3, same session (`robustness.py`):
+
+| K | baseline TPOT | grammar TPOT | grammar vs baseline | tpp base | tpp gram |
+|---|---|---|---|---|---|
+| 3 | 10.22 ms | **8.89 ms** | **1.149×** | 1.420 | 1.847 |
+| 5 (v3) | 11.47 ms | 9.61 ms | 1.193× | 1.443 | 1.969 |
+| 7 | 12.25 ms | 10.51 ms | 1.166× | 1.450 | 2.025 |
+
+Masking wins at every K. Best absolute TPOT: **K=3 grammar = 8.89 ms =
+1.247× vs no_spec (11.09 ms)**.
+
+## Tool-call schema: invalid first experiment → root cause → fixed rerun
+
+**The first tool-schema experiment (in `robustness_results.json`) is INVALID
+and must not be cited.** Cause: the benchmark module wrote the weather schema
+to `SCHEMA_PATH` at import time; the spawned engine worker re-imports the
+module and clobbered the tool schema the parent had just written — so the
+in-engine grammar was the *weather* schema during tool-schema runs. Evidence
+during the session: every request's FSM replay died at token `2116 ('args')`
+(the failing run's log was truncated by the subsequent fixed rerun; the
+post-fix run's log is empty and FSM rejections are 0/2387), while a
+standalone matcher compiled with the TRUE tool schema accepts 100% of
+the same token streams (probes A/A2). Weather runs were unaffected (same
+content written either way), so v3 and the K-sweep stand.
+
+After fixing the schema write (parent-only, before engine start) and using
+the v4 fresh-matcher patch:
+
+| Config | Valid | TPOT | vs no_spec | tok/propose |
+|---|---|---|---|---|
+| no_spec | 5/8 | 11.02 ms | 1.00× | — |
+| baseline EAGLE3 | **3/8** | 13.54 ms | 0.81× | 1.203 |
+| **grammar-masked (v4)** | **5/8** | **10.37 ms** | **1.06×** | **1.807 (+50.2%)** |
+
+- Grammar masking: **1.306× vs baseline**, and acceptance +50.2% on the
+  enum-heavy schema (FSM replay rejections: 0/2387).
+- Bonus finding: constrained spec decode *degrades validity* on this schema
+  (baseline 3/8 vs no_spec 5/8); grammar-masking restores it (5/8). All
+  invalid outputs are degeneration-until-cap loops (grammatically legal
+  whitespace/code repetition), not malformed JSON.
+
+## xgrammar rollback hazard (real; not the tool failure's cause)
+
+Inline standalone micro-tests during the session (T2/T3; transcripts only —
+not separately archived): `GrammarMatcher.rollback`
+after a *permanent accepted prefix* leaves the matcher desynced when the
+rolled-back window contains forced-continuation tokens (e.g. char-splatted
+enum values). This is a genuine landmine for any grammar-masked spec-decode
+design that relies on rollback (xgrammar 0.1.25).
+
+**v4 design (`eagle3_grammar_fresh.py`): fresh matcher per propose + replay
+committed-token history + discard at propose exit — zero rollback calls.**
+Weather under v4: 9.71 ms vs same-session baseline 11.40 ms (1.174×) —
+matches v3. Tool schema (fixed grammar): FSM rejections 0.
+
+## Corrections to the v3 protocol
+
+- v3 warmup was *unconstrained* (32 free tokens), polluting only the warmup
+  request's FSM — no effect on the measured window. v4 warmups are
+  grammar-constrained.
+- v3's shipped script only supports the weather schema as written (the
+  import-time schema write); non-weather schemas need the parent-only write
+  pattern from `rerun_tool_fixed.py`.

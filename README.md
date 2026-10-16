@@ -2,11 +2,13 @@
 
 **Making speculative decoding work under JSON-schema constraints — with honest, reproducible benchmarks.**
 
-> **Status:** active research. Four instrumented iterations complete (v0–v3).
-> v0–v2 are honest negatives that diagnosed the problem; **v3 is positive** —
-> grammar-masked EAGLE3 speculative decoding beats both unmasked EAGLE3 and
-> no-speculation decoding on an agentic JSON workload (1.19× / 1.15× TPOT,
-> +36.5% draft acceptance). See [Results](#results-at-a-glance).
+> **Status:** research complete. Four instrumented iterations (v0–v4).
+> v0–v2 are honest negatives that diagnosed the problem; **v3/v4 are positive**
+> — grammar-masked EAGLE3 speculative decoding beats unmasked EAGLE3 on both
+> a weather-tool JSON schema (**1.19× TPOT, +36.5% acceptance**) and an
+> enum-heavy tool-call schema (**1.31× TPOT, +50.2% acceptance**), winning at
+> every draft length K ∈ {3, 5, 7}, and *restores* the validity that
+> constrained spec decode loses on hard schemas. See [Results](#results-at-a-glance).
 
 ## The problem
 
@@ -55,6 +57,15 @@ rotated config order (mean ± std). Lower TPOT is better.
 
 Raw numbers: [v3-eagle3/](v3-eagle3/) (`RESULTS.md`, `eagle3_grammar_b1_results.json`,
 `eagle3_grammar_diag_results.json`).
+
+**Robustness** (same hardware/protocol, [v3-eagle3/](v3-eagle3/) addendum):
+
+| Check | Result |
+|---|---|
+| K-sweep, weather schema | masking wins at K=3 (**1.15×**), K=5 (1.19×), K=7 (1.17×); best absolute **K=3 grammar = 1.25× vs no-spec** |
+| Enum-heavy tool-call schema | grammar **10.37 ms** vs baseline 13.54 (**1.31×**), acceptance 1.203 → **1.807 (+50.2%)** |
+| Validity on hard schema | constrained spec decode degrades it (baseline **3/8** vs no-spec 5/8); grammar-masking **restores 5/8** |
+| xgrammar `rollback()` | unsound after a permanent prefix when the window contains forced-continuation tokens → v4 uses a **fresh matcher per propose** (no rollback); FSM rejections 0/2387 on the tool schema |
 
 **v0–v2 (diagnostic negatives)** — Qwen2.5-1.5B-Instruct (bf16) target on
 the same A100, vLLM 0.11.2, xgrammar FSM, K=5, 8 JSON-schema-constrained
