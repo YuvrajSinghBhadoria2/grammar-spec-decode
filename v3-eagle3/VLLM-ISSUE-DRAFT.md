@@ -31,9 +31,10 @@ models waste most of their draft budget on tokens the FSM will reject:
 - In an earlier n-gram draft experiment on the same workload, **84.9%** of
   drafted tokens were rejected by the grammar FSM (292/344).
 
-This matches the open roadmap item:
-*“Improve robustness with tool calling + reasoning and structured outputs”*
-(SIG Spec Decode, Q3 2026 roadmap tracking issue #48168).
+This matches the open roadmap item
+*"Improve configuration ergonomics and robustness with tool calling,
+reasoning, and structured outputs"* (SIG Spec Decode, Q4 2026 roadmap
+#61024).
 
 ## Proposal: grammar-masked draft logits
 
@@ -60,9 +61,9 @@ verification:
    row, fall back to the first grammar-valid token (worst case: one wasted
    draft slot; validity unaffected — measured fallback rate: 0/4486 masks).
 
-Measured effect (same hardware/workload as above; 12 distinct agentic
-prompts, 3 timing iterations, rotated config order, diagnostics disabled
-in the hot path):
+Measured effect (same hardware/workload as above; single-session
+measurement — 12 distinct agentic prompts, 3 timing iterations, rotated
+config order, diagnostics disabled in the hot path):
 
 | Config | TPOT (ms) | tok/propose | vs no_spec | vs baseline |
 |---|---|---|---|---|
